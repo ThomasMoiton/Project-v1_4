@@ -1,0 +1,27 @@
+﻿@model Project_v1_4.Models.LoginModel
+@using (Html.BeginForm("LoginUser", "Home", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center">Login to Find My Party</h2>
+            <h4 class="text-center">Login to find the best night out in your area or to join your friends </h4>
+            <div class="col-md-12 text-center">
+                <div class="text-center">studiio
+
+                    @Html.TextBoxFor(model => model.UserName, new { @class = "fadeIn second", @placeholder = "Username", @value = "username", @name = "username" })
+                </div>
+                <br />
+                <div class="text-center">
+                    @Html.PasswordFor(model => model.Password, new { @class = "fadeIn second", @placeholder = "Password", @name = "password" })
+                </div>
+            </div>
+            <div class="col-md-12 text-center">
+                <p><a class="btn-link" href="~/Home/Contact">Do not have an account ? Sign up here</a></p>
+            </div>
+            <div class="col-md-12 text-center">
+                <label>Login</label>
+                <button type="submit" class="glyphicon glyphicon-send"></button>
+            </div>
+        </div>
+    </div>
+}

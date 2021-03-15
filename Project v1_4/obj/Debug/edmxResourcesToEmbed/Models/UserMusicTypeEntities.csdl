@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FindMyPartyModel2" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="UserMusicTypes">
+    <Key>
+      <PropertyRef Name="UserMusicTypeId" />
+    </Key>
+    <Property Name="UserMusicTypeId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="MusicTypeId" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="UserMusicTypeEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="UserMusicTypes" EntityType="Self.UserMusicTypes" />
+  </EntityContainer>
+</Schema>

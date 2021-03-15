@@ -1,0 +1,142 @@
+﻿@model Project_v1_4.Models.UserModel
+@using (Html.BeginForm("SaveContact", "Home", FormMethod.Post@*, new { id = "signUpForm" }*@))
+{
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.syncfusion.com/js/assets/external/jsrender.min.js"></script>
+    <script src="https://cdn.syncfusion.com/16.4.0.52/js/web/ej.web.all.min.js"></script>
+    <script src="~/Scripts/UserSignUpPageScripts.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#deleteButtonMusicType").hide();
+            $("#deleteButtonMusicType1").hide();
+            $("#deleteButtonMusicType2").hide();
+            $("#deleteButtonMusicType3").hide();
+            $("#deleteButtonMusicType4").hide();
+            $("#deleteButtonMusicType5").hide();
+            $("#deleteButtonMusicType6").hide();
+            $("#deleteButtonMusicType7").hide();
+            $("#deleteButtonMusicType8").hide();
+            $("#deleteButtonMusicType9").hide();
+            $("#deleteButtonMusicType10").hide();
+            $("#deleteButtonMusicType11").hide();
+        })
+
+    </script>
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center">Sign up to Find My Party</h2>
+            <h4 class="text-center">Create an account here </h4>
+            <div class="text-center">
+                <div class="row">
+                    <div class=" col-md-6 text-center left">
+                        <br />
+                        @Html.TextBoxFor(model => model.UserName, new { @class = "fadeIn second", @placeholder = "Email", @value = "username", @name = "username", @maxlength = "255", @onkeyup = "emailValidate()" })
+                        <br />
+                        <label id='invalidEmail'></label>
+                    </div>
+                    <div class=" col-md-6 text-center right">
+                        Enter your date of birth here
+                        <br />
+                        <input id="birthdateId" type="date" class="datepicker" name="Birthdate" onkeyup="birthdateValidate()" value="1998-05-27" />
+                        <br />
+                        <label style="color: red"> (Notice: you need to be at least 13 years old to create an account) </label>
+                        <label id='birthdateErrorMesage'></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class=" col-md-6 text-center left">
+                        <br />
+                        @Html.TextBoxFor(model => model.Forename, new { @class = "fadeIn second", @placeholder = "Forename", @value = "forename", @name = "forename", @maxlength = "35", @onkeyup = "forenameValidate()" })
+                        <br />
+                        <label id='forenameErrorMesage'></label>
+                        <br />
+                        @Html.ValidationMessageFor(model => model.Forename, null, new { @style = "color:red" })
+                        <br />
+                        @Html.TextBoxFor(model => model.Lastname, new { @class = "fadeIn second", @placeholder = "Lastname", @value = "Lastname", @name = "Lastname", @maxlength = "35", @onkeyup = "lastnameValidate()" })
+                        <br />
+                        <label id='lastnameErrorMesage'></label>
+                        <br />
+                        @Html.ValidationMessageFor(model => model.Lastname, null, new { @style = "color:red" })
+                        <br />
+                        @Html.PasswordFor(model => model.UserPassword, new { @class = "fadeIn second", @placeholder = "Password", @name = "password", @maxlength = "25", @onkeyup = "passwordValidate()" })
+                        <br />
+                        <label id='passwordErrorMesage'></label>
+                        @*<input type="checkbox" onclick="showPassword()" >Show Password*@
+                        <br />
+                        @Html.ValidationMessageFor(model => model.UserPassword, null, new { @style = "color:red" })
+                        <br />
+                        @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "fadeIn second", @name = "confirmPassword", @placeholder = "Confirm Password", @onkeyup = "matchPassword()" })
+                        <br />
+                        <label id='confirmPasswordErrorMesage'></label>
+                        @Html.ValidationMessageFor(model => model.ConfirmPassword, null, new { @style = "color:red" })
+                    </div>
+                    <div class=" col-md-6 text-center right">
+                        <br />
+                        Select your residential country
+                        <br />
+                        @Html.DropDownList("CountryId", new SelectList(ViewBag.Countries, "CountryId", "CountryName"))
+                        <br />
+                        <br />
+                        <br />
+                        @Html.TextBoxFor(model => model.Address, new { @class = "fadeIn second", @placeholder = "Address", @value = "Address", @name = "Address", @maxlength = "50" })
+                        <br />
+                        <br />
+                        <br />
+                        @Html.TextBoxFor(model => model.PostCode, new { @class = "fadeIn second", @placeholder = "Post Code and City", @value = "PostCode", @name = "PostCode", @maxlength = "10" })
+                        <br />
+                        <br />
+                        Select your favorite(s) music type(s)
+                        <br />
+                        @Html.DropDownList("MusicTypeId", new SelectList(ViewBag.Musics, "MusicTypeId", "MusicTypeName"), new { @onchange = "enableSelect()" })
+
+                        @*@Html.HiddenFor(m => m.MusicTypeChoosens)*@
+                        <button type="button" class="btn-save btn btn-primary btn-sm" onclick="selectMusicType()" id="selectButton">Select</button>
+                        <br />
+                        <table id="musicChoosensTable" style="margin-right: auto; margin-left: auto;">
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <label id="musicTypeLabel1"></label>
+                    <button type="button" class="glyphicon glyphicon-remove" style="background-color: red" id="deleteButtonMusicType" onclick="deleteMusicType()"></button>
+                    <label id="musicTypeLabel2"></label>
+                    <button type="button" class="glyphicon glyphicon-remove" style="background-color:red" id="deleteButtonMusicType1" onclick="deleteMusicType1()"></button>
+                    <label id="musicTypeLabel3"></label>
+                    <button type="button" class="glyphicon glyphicon-remove" style="background-color:red" id="deleteButtonMusicType2" onclick="deleteMusicType2()"></button>
+                    <label id="musicTypeLabel4"></label>
+                    <button type="button" class="glyphicon glyphicon-remove" style="background-color:red" id="deleteButtonMusicType3" onclick="deleteMusicType3()"></button>
+                    <label id="musicTypeLabel5"></label>
+                    <button type="button" class="glyphicon glyphicon-remove" style="background-color:red" id="deleteButtonMusicType4" onclick="deleteMusicType4()"></button>
+                    <label id="musicTypeLabel6"></label>
+                    <button type="button" class="glyphicon glyphicon-remove" style="background-color:red" id="deleteButtonMusicType5" onclick="deleteMusicType5()"></button>
+                    <label id="musicTypeLabel7"></label>
+                    <button type="button" class="glyphicon glyphicon-remove" style="background-color:red" id="deleteButtonMusicType6" onclick="deleteMusicType6()"></button>
+                    <label id="musicTypeLabel8"></label>
+                    <button type="button" class="glyphicon glyphicon-remove" style="background-color:red" id="deleteButtonMusicType7" onclick="deleteMusicType7()"></button>
+                    <label id="musicTypeLabel9"></label>
+                    <button type="button" class="glyphicon glyphicon-remove" style="background-color:red" id="deleteButtonMusicType8" onclick="deleteMusicType8()"></button>
+                    <label id="musicTypeLabel0"></label>
+                    <button type="button" class="glyphicon glyphicon-remove" style="background-color:red" id="deleteButtonMusicType9" onclick="deleteMusicType9()"></button>
+                    <label id="musicTypeLabel11"></label>
+                    <button type="button" class="glyphicon glyphicon-remove" style="background-color:red" id="deleteButtonMusicType10" onclick="deleteMusicType10()"></button>
+                    <label id="musicTypeLabel12"></label>
+                    <button type="button" class="glyphicon glyphicon-remove" style="background-color:red" id="deleteButtonMusicType11" onclick="deleteMusicType11()"></button>
+                </div>
+                <div class="col-md-12 text-center">
+                    <label></label>
+                    <button type="button" id="saveContactButton" style="background-color: #4CAF50; border: none;color: white;padding: 15px 32px; text-align: center; text-decoration: none;display: inline-block; font-size: 16px;" onclick="saveContact()">Sign up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+}

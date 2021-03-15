@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FindMyPartyModel2StoreContainer" CdmEntityContainer="UserMusicTypeEntities">
+    <EntitySetMapping Name="UserMusicTypes">
+      <EntityTypeMapping TypeName="FindMyPartyModel2.UserMusicTypes">
+        <MappingFragment StoreEntitySet="UserMusicTypes">
+          <ScalarProperty Name="UserMusicTypeId" ColumnName="UserMusicTypeId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="MusicTypeId" ColumnName="MusicTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
