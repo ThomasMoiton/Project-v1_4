@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="UsersModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="35" />
+    <Property Name="FirstName" Type="varchar" MaxLength="35" />
+    <Property Name="BirthDate" Type="date" />
+    <Property Name="GenderId" Type="int" />
+    <Property Name="LineAdress" Type="varchar" MaxLength="50" />
+    <Property Name="PostCode" Type="varchar" MaxLength="10" />
+    <Property Name="City" Type="varchar" MaxLength="170" />
+    <Property Name="CountryID" Type="varchar" MaxLength="3" />
+  </EntityType>
+  <EntityContainer Name="UsersModelStoreContainer">
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

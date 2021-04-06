@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CountryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Countries">
+    <Key>
+      <PropertyRef Name="CountryId" />
+    </Key>
+    <Property Name="CountryId" Type="Int32" Nullable="false" />
+    <Property Name="CountryName" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="CountryEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Countries" EntityType="Self.Countries" />
+  </EntityContainer>
+</Schema>

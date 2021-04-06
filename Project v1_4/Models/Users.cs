@@ -14,14 +14,16 @@ namespace Project_v1_4.Models
     
     public partial class Users
     {
-        public int UserId { get; set; }
-        public string Username { get; set; }
+        public string UserId { get; set; }
         public string Password { get; set; }
-        public System.DateTime Birthdate { get; set; }
-        public string Address { get; set; }
+        public string Email { get; set; }
+        public string LastName { get; set; }
+        public string FirstName { get; set; }
+        public Nullable<System.DateTime> BirthDate { get; set; }
+        public Nullable<int> GenderId { get; set; }
+        public string LineAdress { get; set; }
         public string PostCode { get; set; }
-        public int CountryId { get; set; }
-        public string Forename { get; set; }
-        public string Lastname { get; set; }
+        public string City { get; set; }
+        public string CountryID { get; set; }
     }
 }

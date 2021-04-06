@@ -1,25 +1,192 @@
 ﻿@model Project_v1_4.Models.UserModel
+@*<head>
+        <meta charset='utf-8' />
+        <link href="~/Content/fullcalendar.min.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.css" rel="stylesheet" />
+        <script src="~/Scripts/jquery-3.3.1.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/moment.min.js"></script>
+        <script src="~/Scripts/fullcalendar.min.js"></script>
+        <script src="~/Scripts/calendar.js"></script>
+        <script>
+            $(document).ready(function () {
+                GetEventsOnPageLoad();
+            });
+        </script>
+        <style>
+            .calendar-body {
+                height: calc(100vh - 165 px);
+                width: 90%;
+                padding-left: 130px;
+            }
+
+            .calendar-header {
+                padding-left: 30px;
+            }
+        </style>
+    </head>
+        <body>
+            <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="text-center">Find My Party</h2>
+                        <h4 class="text-center">Here are your upcomig parties </h4>
+                        <div class="row">
+                            <section class="col-md-12">
+                                <button type="button" class="glyphicon glyphicon-home"></button>
+                                <div class="calendar-body">
+                                    <div id="calendar"></div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            <div id="MyPopup" class="modal fade modal-CreateEvent" role="dialog">
+                <div class="modal-dialog"></div>
+                <div class="modal-content">
+                    <div class="model-header">
+                        <h4 class="modal-title"></h4>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn" data-dismiss="modal"></button>
+                        OK
+                    </div>
+                </div>
+            </div>
+        </body>-->*@
 <!DOCTYPE html>
-<html>
+<html lang='en'>
 <head>
     <meta charset='utf-8' />
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://cdn.syncfusion.com/js/assets/external/jsrender.min.js"></script>
-    <script src="https://cdn.syncfusion.com/16.4.0.52/js/web/ej.web.all.min.js"></script>
-    <script" src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.3.1/fullcalendar.css></script">
-        <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.3.1/fullcalendar.js"></script>
-        @*<script src="~/Scripts/Script-Calendar.js"></script>*@
-        <script src="~/Scripts/UserSignUpPageScripts.js"></script>
+    <link href='https://tm418.brighton.domains/Projectv1_4/main.css' rel='stylesheet' />
+    <script src='https://tm418.brighton.domains/Projectv1_4/main.js'></script>
+    <link href="https://tm418.brighton.domains/Projectv1_4/fullcalendar.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="https://tm418.brighton.domains/Projectv1_4/jquery-3.3.1.js"></script>
+    <script src="https://tm418.brighton.domains/Projectv1_4/bootstrap.min.js"></script>
+    <script src="https://tm418.brighton.domains/Projectv1_4/jquery-3.3.1.min.js"></script>
+    <script src="https://tm418.brighton.domains/Projectv1_4/moment.min.js"></script>
+    <script src="https://tm418.brighton.domains/Projectv1_4/fullcalendar.min.js"></script>
+    <script src="https://tm418.brighton.domains/Projectv1_4/calendar.js"></script>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                buttonText: {
+                    today: 'Today',
+                    month: 'Month',
+                    week: 'Week',
+                    day: 'Day'
+                },
+                selectable: true,
+                select: function () {
+                    showModal('Create an Event', 'Bind your information to navigate any page', null);
+                },
+                height: 'parent',
+                events: function (start, end, timezone, callback) {
+                    $.ajax({
+                        type: "GET",
+                        contentType: "application/json",
+                        url: "GetEventData",
+                        dataType: "JSON",
+                        success: function (result) {
+                            var events = [];
+                            $.each(result, function (i, data) {
+                                events.push({
+                                    title: data.DescriptionName,
+                                    start: moment(data.StartDate).format("YYYY-MM-DD HH:mm:ss"),
+                                    end: moment(data.EndDate).format("YYYY-MM-DD HH:mm:ss"),
+                                    backgroundColor: '#d05985',
+                                    borderColor: 'black',
+                                    id: data.PrivatePartyId
+                                });
+                            });
+                            console.log(events);
+                            callback(events);
+                        }
+                    })
+                },
+                nextDayThreshold: '00:00:00',
+                editable: true,
+                droppable: true,
+                nowIndicator: true,
+                eventClick: function (info) {
+                    GetEventDetailByEventId(info);
+                },
+                eventDrop: function (info) {
+                    console.log(info);
+                    UpdateEventDetails(info.id, info.start.toISOString(), info.end.toISOString());
+                },
+                eventResize: function (info) {
+                    UpdateEventDetails(info.id, info.start.toISOString(), info.end.toISOString());
+                }
+            });
+            calendar.render();
+        });
+
+        function showModal(title, body, isEventDetail) {
+            document.getElementsByClassName("modal-title");
+
+            if (isEventDetail == null) {
+                document.getElementsByClassName("modal-body");
+                $("#MyPopup").modal("show");
+            }
+            else {
+                var eventDetail = 'Event Name: ' + body[0].name + '</br>';
+                var eventInfo = 'Event Info: ' + body[0].info + '</br>';
+                var eventStart = 'Event Start Date' + moment(body[0].startdate).format("YYYY-MM-DD HH:mm:ss") + '</br>';
+                var eventEnd = 'Event End Date' + moment(body[0].enddate).format("YYYY-MM-DD HH:mm:ss") + '</br>';
+                $("#MyPopup .modal-body").html(eventDetail + eventInfo + eventStart + eventEnd);
+                $("#MyPopup").modal("show");
+            }
+        }
+
+        function GetEventDetailByEventId(eventinfo) {
+            var object = {};
+            object.EventId = eventinfo.id;
+            $.ajax({
+                type: "POST",
+                url: "Home/GetEventDetailByEventId",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(object),
+                success: function (eventdetails) {
+                    showModal('Event Details', eventdetails, true);
+                }
+            });
+        }
+
+        function UpdateEventDetails(eventId, startDate, endDate) {
+            var object = {};
+            object.EventId = eventId;
+            object.startDate = startDate;
+            object.EndDate = endDate;
+            $.ajax({
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                url: "Home/UpdateEventDetails",
+                dataType: "JSON",
+                data: JSON.stringify(object)
+            });
+        }
+    </script>
 </head>
 <body>
     <div class="row">
         <div class="col-md-12">
-            <h2 class="text-center">Find My Party</h2>
+            <h2 class="text-center">Organize My Party</h2>
             <h4 class="text-center">Here are your upcomig parties </h4>
             <div class="row">
                 <section class="col-md-12">
-                    <button type="button" class="glyphicon glyphicon-home"></button>
                     <div class="calendar-body">
                         <div id="calendar"></div>
                     </div>

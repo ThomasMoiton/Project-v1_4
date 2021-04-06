@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ToBringModelStoreContainer" CdmEntityContainer="ToBringEntities">
+    <EntitySetMapping Name="ToBring">
+      <EntityTypeMapping TypeName="ToBringModel.ToBring">
+        <MappingFragment StoreEntitySet="ToBring">
+          <ScalarProperty Name="ToBringItemId" ColumnName="ToBringItemId" />
+          <ScalarProperty Name="DToBringItemName" ColumnName="DToBringItemName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

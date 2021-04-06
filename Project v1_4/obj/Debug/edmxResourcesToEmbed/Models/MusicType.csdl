@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MusicTypeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="MusicTypes">
+    <Key>
+      <PropertyRef Name="MusicTypeId" />
+    </Key>
+    <Property Name="MusicTypeId" Type="Int32" Nullable="false" />
+    <Property Name="MusicTypeName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="MusicTypeEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="MusicTypes" EntityType="Self.MusicTypes" />
+  </EntityContainer>
+</Schema>

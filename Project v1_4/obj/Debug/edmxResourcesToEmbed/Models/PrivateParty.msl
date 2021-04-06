@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PrivatePartyModelStoreContainer" CdmEntityContainer="PrivatePartyEntities">
+    <EntitySetMapping Name="PrivateParty">
+      <EntityTypeMapping TypeName="PrivatePartyModel.PrivateParty">
+        <MappingFragment StoreEntitySet="PrivateParty">
+          <ScalarProperty Name="PrivatePartyId" ColumnName="PrivatePartyId" />
+          <ScalarProperty Name="HostUserId" ColumnName="HostUserId" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="DescriptionName" ColumnName="DescriptionName" />
+          <ScalarProperty Name="LineAdress" ColumnName="LineAdress" />
+          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="DressCode" ColumnName="DressCode" />
+          <ScalarProperty Name="ParticipationFee" ColumnName="ParticipationFee" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

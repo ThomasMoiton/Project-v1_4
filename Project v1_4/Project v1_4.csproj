@@ -138,79 +138,170 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Countries.cs">
-      <DependentUpon>CountryEntities.tt</DependentUpon>
+      <DependentUpon>Country.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CountryEntities.Context.cs">
+    <Compile Include="Models\Country.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CountryEntities.Context.tt</DependentUpon>
+      <DependentUpon>Country.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CountryEntities.cs">
+    <Compile Include="Models\Country.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CountryEntities.tt</DependentUpon>
+      <DependentUpon>Country.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CountryEntities.Designer.cs">
+    <Compile Include="Models\Country.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CountryEntities.edmx</DependentUpon>
+      <DependentUpon>Country.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Drink.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Drink.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Drink.cs">
+      <DependentUpon>Drink.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Drink.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Drink.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Drink1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Drink.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Food.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Food.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Food.cs">
+      <DependentUpon>Food.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Food.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Food.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Food1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Food.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\HomeViewModels.cs" />
     <Compile Include="Models\LoginModel.cs" />
-    <Compile Include="Models\MusicTypeEntities.Context.cs">
+    <Compile Include="Models\MusicStyle.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MusicTypeEntities.Context.tt</DependentUpon>
+      <DependentUpon>MusicStyle.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\MusicTypeEntities.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MusicTypeEntities.tt</DependentUpon>
+    <Compile Include="Models\MusicStyle.cs">
+      <DependentUpon>MusicStyle.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\MusicTypeEntities.Designer.cs">
+    <Compile Include="Models\MusicStyle.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MusicTypeEntities.edmx</DependentUpon>
+      <DependentUpon>MusicStyle.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MusicStyle1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MusicStyle.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MusicType.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MusicType.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MusicType.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MusicType.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MusicType.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MusicType.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\MusicTypes.cs">
-      <DependentUpon>MusicTypeEntities.tt</DependentUpon>
+      <DependentUpon>MusicType.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\UserEntities.Context.cs">
+    <Compile Include="Models\PrivateParty.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>UserEntities.Context.tt</DependentUpon>
+      <DependentUpon>PrivateParty.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\UserEntities.cs">
+    <Compile Include="Models\PrivateParty.cs">
+      <DependentUpon>PrivateParty.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PrivateParty.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>UserEntities.tt</DependentUpon>
+      <DependentUpon>PrivateParty.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\UserEntities.Designer.cs">
+    <Compile Include="Models\PrivateParty1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>UserEntities.edmx</DependentUpon>
+      <DependentUpon>PrivateParty.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PrivatePartyModel.cs" />
+    <Compile Include="Models\ToBring.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToBring.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ToBring.cs">
+      <DependentUpon>ToBring.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ToBring.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToBring.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ToBring1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ToBring.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserModel.cs" />
-    <Compile Include="Models\UserMusicTypeEntities.Context.cs">
+    <Compile Include="Models\UserMusicStyle.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>UserMusicTypeEntities.Context.tt</DependentUpon>
+      <DependentUpon>UserMusicStyle.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\UserMusicTypeEntities.cs">
+    <Compile Include="Models\UserMusicStyle.cs">
+      <DependentUpon>UserMusicStyle.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserMusicStyle.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>UserMusicTypeEntities.tt</DependentUpon>
+      <DependentUpon>UserMusicStyle.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\UserMusicTypeEntities.Designer.cs">
+    <Compile Include="Models\UserMusicStyle1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>UserMusicTypeEntities.edmx</DependentUpon>
+      <DependentUpon>UserMusicStyle.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\UserMusicTypes.cs">
-      <DependentUpon>UserMusicTypeEntities.tt</DependentUpon>
+    <Compile Include="Models\Users.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Users.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Users.cs">
-      <DependentUpon>UserEntities.tt</DependentUpon>
+      <DependentUpon>Users.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Users.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Users.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Users1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Users.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -223,90 +314,222 @@
     <Content Include="Content\fullcalendar.min.css" />
     <Content Include="Content\fullcalendar.print.css" />
     <Content Include="Content\fullcalendar.print.min.css" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\CountryEntities.Context.tt">
+    <Content Include="Models\Country.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CountryEntities.edmx</DependentUpon>
-      <LastGenOutput>CountryEntities.Context.cs</LastGenOutput>
+      <DependentUpon>Country.edmx</DependentUpon>
+      <LastGenOutput>Country.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\CountryEntities.tt">
+    <Content Include="Models\Country.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CountryEntities.edmx</DependentUpon>
-      <LastGenOutput>CountryEntities.cs</LastGenOutput>
+      <DependentUpon>Country.edmx</DependentUpon>
+      <LastGenOutput>Country.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\MusicTypeEntities.Context.tt">
+    <Content Include="Models\Drink.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MusicTypeEntities.edmx</DependentUpon>
-      <LastGenOutput>MusicTypeEntities.Context.cs</LastGenOutput>
+      <DependentUpon>Drink.edmx</DependentUpon>
+      <LastGenOutput>Drink.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\MusicTypeEntities.tt">
+    <Content Include="Models\Drink.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MusicTypeEntities.edmx</DependentUpon>
-      <LastGenOutput>MusicTypeEntities.cs</LastGenOutput>
+      <DependentUpon>Drink.edmx</DependentUpon>
+      <LastGenOutput>Drink1.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\UserEntities.Context.tt">
+    <Content Include="Models\Food.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>UserEntities.edmx</DependentUpon>
-      <LastGenOutput>UserEntities.Context.cs</LastGenOutput>
+      <DependentUpon>Food.edmx</DependentUpon>
+      <LastGenOutput>Food.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\UserEntities.tt">
+    <Content Include="Models\Food.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>UserEntities.edmx</DependentUpon>
-      <LastGenOutput>UserEntities.cs</LastGenOutput>
+      <DependentUpon>Food.edmx</DependentUpon>
+      <LastGenOutput>Food1.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\UserMusicTypeEntities.Context.tt">
+    <Content Include="Models\MusicStyle.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>UserMusicTypeEntities.edmx</DependentUpon>
-      <LastGenOutput>UserMusicTypeEntities.Context.cs</LastGenOutput>
+      <DependentUpon>MusicStyle.edmx</DependentUpon>
+      <LastGenOutput>MusicStyle.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\UserMusicTypeEntities.tt">
+    <Content Include="Models\MusicStyle.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>UserMusicTypeEntities.edmx</DependentUpon>
-      <LastGenOutput>UserMusicTypeEntities.cs</LastGenOutput>
+      <DependentUpon>MusicStyle.edmx</DependentUpon>
+      <LastGenOutput>MusicStyle1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\MusicType.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MusicType.edmx</DependentUpon>
+      <LastGenOutput>MusicType.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\MusicType.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MusicType.edmx</DependentUpon>
+      <LastGenOutput>MusicType.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\PrivateParty.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PrivateParty.edmx</DependentUpon>
+      <LastGenOutput>PrivateParty.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\PrivateParty.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PrivateParty.edmx</DependentUpon>
+      <LastGenOutput>PrivateParty1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ToBring.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ToBring.edmx</DependentUpon>
+      <LastGenOutput>ToBring.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ToBring.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ToBring.edmx</DependentUpon>
+      <LastGenOutput>ToBring1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\UserMusicStyle.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UserMusicStyle.edmx</DependentUpon>
+      <LastGenOutput>UserMusicStyle.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\UserMusicStyle.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UserMusicStyle.edmx</DependentUpon>
+      <LastGenOutput>UserMusicStyle1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Users.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Users.edmx</DependentUpon>
+      <LastGenOutput>Users.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Users.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Users.edmx</DependentUpon>
+      <LastGenOutput>Users1.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\CountryEntities.edmx">
+    <EntityDeploy Include="Models\Users.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CountryEntities.Designer.cs</LastGenOutput>
+      <LastGenOutput>Users.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\CountryEntities.edmx.diagram">
-      <DependentUpon>CountryEntities.edmx</DependentUpon>
+    <Content Include="Models\Users.edmx.diagram">
+      <DependentUpon>Users.edmx</DependentUpon>
     </Content>
-    <EntityDeploy Include="Models\MusicTypeEntities.edmx">
+    <EntityDeploy Include="Models\MusicStyle.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MusicTypeEntities.Designer.cs</LastGenOutput>
+      <LastGenOutput>MusicStyle.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\MusicTypeEntities.edmx.diagram">
-      <DependentUpon>MusicTypeEntities.edmx</DependentUpon>
+    <Content Include="Models\MusicStyle.edmx.diagram">
+      <DependentUpon>MusicStyle.edmx</DependentUpon>
     </Content>
-    <EntityDeploy Include="Models\UserMusicTypeEntities.edmx">
+    <EntityDeploy Include="Models\UserMusicStyle.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>UserMusicTypeEntities.Designer.cs</LastGenOutput>
+      <LastGenOutput>UserMusicStyle.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\UserMusicTypeEntities.edmx.diagram">
-      <DependentUpon>UserMusicTypeEntities.edmx</DependentUpon>
+    <Content Include="Models\UserMusicStyle.edmx.diagram">
+      <DependentUpon>UserMusicStyle.edmx</DependentUpon>
     </Content>
-    <EntityDeploy Include="Models\UserEntities.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>UserEntities.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\UserEntities.edmx.diagram">
-      <DependentUpon>UserEntities.edmx</DependentUpon>
-    </Content>
-    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="libman.json" />
+    <Content Include="Scripts\calendar.js" />
     <Content Include="Scripts\fullcalendar.js" />
     <Content Include="Scripts\fullcalendar.min.js" />
     <Content Include="Scripts\gcal.js" />
     <Content Include="Scripts\gcal.min.js" />
-    <Content Include="Scripts\jquery-3.4.1.js" />
-    <Content Include="Scripts\jquery-3.4.1.min.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <EntityDeploy Include="Models\PrivateParty.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PrivateParty.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\PrivateParty.edmx.diagram">
+      <DependentUpon>PrivateParty.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\MusicType.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MusicType.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\MusicType.edmx.diagram">
+      <DependentUpon>MusicType.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\Country.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Country.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Country.edmx.diagram">
+      <DependentUpon>Country.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\Food.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Food.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Food.edmx.diagram">
+      <DependentUpon>Food.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\ToBring.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ToBring.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ToBring.edmx.diagram">
+      <DependentUpon>ToBring.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\Drink.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Drink.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Drink.edmx.diagram">
+      <DependentUpon>Drink.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -400,12 +623,16 @@
     <Content Include="Scripts\locale\vi.js" />
     <Content Include="Scripts\locale\zh-cn.js" />
     <Content Include="Scripts\locale\zh-tw.js" />
+    <Content Include="Content\main.css" />
+    <Content Include="Scripts\main.js" />
+    <Content Include="Content\main.min.css" />
+    <Content Include="Scripts\main.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\moment-with-locales.js" />
     <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
-    <Content Include="Scripts\Script-Calendar.js" />
+    <Content Include="Scripts\PrivateParty.js" />
     <Content Include="Scripts\scripts.js" />
     <Content Include="Scripts\UserSignUpPageScripts.js" />
     <Content Include="Web.config" />
@@ -424,6 +651,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\_CalendarPartial.cshtml" />
     <Content Include="Views\Home\HomePage.cshtml" />
+    <Content Include="Views\Home\CreatePrivateParty.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -438,8 +666,6 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

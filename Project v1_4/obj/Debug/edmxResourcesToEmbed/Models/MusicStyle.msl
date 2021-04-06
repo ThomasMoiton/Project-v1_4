@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MusicStyleModelStoreContainer" CdmEntityContainer="MusicStyleEntities">
+    <EntitySetMapping Name="MusicStyle">
+      <EntityTypeMapping TypeName="MusicStyleModel.MusicStyle">
+        <MappingFragment StoreEntitySet="MusicStyle">
+          <ScalarProperty Name="MusicStyleId" ColumnName="MusicStyleId" />
+          <ScalarProperty Name="MusicStyleName" ColumnName="MusicStyleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
