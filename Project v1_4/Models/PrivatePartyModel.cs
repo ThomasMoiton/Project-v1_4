@@ -14,7 +14,7 @@ namespace Project_v1_4.Models
         public int CountryId { get; set; }
         public int MusicStyleId { get; set; }
         public int DrinkItemId { get; set; }
-        public int FoodId { get; set; }
+        public int FoodItemId { get; set; }
         public int ToBringItemId { get; set; }
         public string DressCode { get; set; }
         public int ParticipationFee { get; set; }

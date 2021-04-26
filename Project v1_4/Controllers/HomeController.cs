@@ -19,6 +19,7 @@ namespace Project_v1_4.Controllers
         DrinkEntities de = new DrinkEntities();
         FoodEntities fe = new FoodEntities();
         ToBringEntities tbe = new ToBringEntities();
+        currencyEntities cE = new currencyEntities();
         public ActionResult Index()
         {
             return View();
@@ -43,6 +44,7 @@ namespace Project_v1_4.Controllers
             var drinks = de.Drink.ToList();
             var food = fe.Food.ToList();
             var toBring = tbe.ToBring.ToList();
+            var currency = cE.Currency.ToList();
             if (musics != null && countries != null && drinks != null && food != null && toBring != null)
             {
                 ViewBag.Drink = drinks;
@@ -50,8 +52,8 @@ namespace Project_v1_4.Controllers
                 ViewBag.Countries = countries;
                 ViewBag.Food = food;
                 ViewBag.ToBring = toBring;
+                ViewBag.Currency = currency;
             }
-            ViewBag.Message = "Your contact page.";
 
             var privatePartyModel = new PrivatePartyModel { };
 

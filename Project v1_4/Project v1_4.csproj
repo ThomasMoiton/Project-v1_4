@@ -155,6 +155,24 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Country.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Currency.cs">
+      <DependentUpon>CurrencyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CurrencyModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CurrencyModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CurrencyModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CurrencyModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CurrencyModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CurrencyModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Drink.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -369,6 +387,16 @@
       <DependentUpon>Country.edmx</DependentUpon>
       <LastGenOutput>Country.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\CurrencyModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CurrencyModel.edmx</DependentUpon>
+      <LastGenOutput>CurrencyModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\CurrencyModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CurrencyModel.edmx</DependentUpon>
+      <LastGenOutput>CurrencyModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\Drink.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Drink.edmx</DependentUpon>
@@ -519,6 +547,13 @@
     </EntityDeploy>
     <Content Include="Models\Drink.edmx.diagram">
       <DependentUpon>Drink.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\CurrencyModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CurrencyModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\CurrencyModel.edmx.diagram">
+      <DependentUpon>CurrencyModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
