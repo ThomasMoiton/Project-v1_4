@@ -14,7 +14,16 @@ namespace Project_v1_4.Models
     
     public partial class Countries
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Countries()
+        {
+            this.Users = new HashSet<Users>();
+        }
+    
         public int CountryId { get; set; }
         public string CountryName { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Users> Users { get; set; }
     }
 }

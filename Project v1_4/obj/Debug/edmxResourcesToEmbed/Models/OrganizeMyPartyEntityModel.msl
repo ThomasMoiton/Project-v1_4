@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FindMyPartyModelStoreContainer" CdmEntityContainer="FindMyPartyEntities">
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="FindMyPartyModel.Countries">
+        <MappingFragment StoreEntitySet="Countries">
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Currency">
+      <EntityTypeMapping TypeName="FindMyPartyModel.Currency">
+        <MappingFragment StoreEntitySet="Currency">
+          <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+          <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+          <ScalarProperty Name="CurrencySymbol" ColumnName="CurrencySymbol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Drink">
+      <EntityTypeMapping TypeName="FindMyPartyModel.Drink">
+        <MappingFragment StoreEntitySet="Drink">
+          <ScalarProperty Name="DrinkItemId" ColumnName="DrinkItemId" />
+          <ScalarProperty Name="DrinkItemName" ColumnName="DrinkItemName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Food">
+      <EntityTypeMapping TypeName="FindMyPartyModel.Food">
+        <MappingFragment StoreEntitySet="Food">
+          <ScalarProperty Name="FoodItemId" ColumnName="FoodItemId" />
+          <ScalarProperty Name="FoodItemName" ColumnName="FoodItemName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MusicTypes">
+      <EntityTypeMapping TypeName="FindMyPartyModel.MusicTypes">
+        <MappingFragment StoreEntitySet="MusicTypes">
+          <ScalarProperty Name="MusicTypeId" ColumnName="MusicTypeId" />
+          <ScalarProperty Name="MusicTypeName" ColumnName="MusicTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrivateParty">
+      <EntityTypeMapping TypeName="FindMyPartyModel.PrivateParty">
+        <MappingFragment StoreEntitySet="PrivateParty">
+          <ScalarProperty Name="PrivatePartyId" ColumnName="PrivatePartyId" />
+          <ScalarProperty Name="HostUserId" ColumnName="HostUserId" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="DescriptionName" ColumnName="DescriptionName" />
+          <ScalarProperty Name="LineAdress" ColumnName="LineAdress" />
+          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="DressCode" ColumnName="DressCode" />
+          <ScalarProperty Name="ParticipationFee" ColumnName="ParticipationFee" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrivatePartyDrink">
+      <EntityTypeMapping TypeName="FindMyPartyModel.PrivatePartyDrink">
+        <MappingFragment StoreEntitySet="PrivatePartyDrink">
+          <ScalarProperty Name="PrivatePartyId" ColumnName="PrivatePartyId" />
+          <ScalarProperty Name="DrinkItemId" ColumnName="DrinkItemId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ToBring">
+      <EntityTypeMapping TypeName="FindMyPartyModel.ToBring">
+        <MappingFragment StoreEntitySet="ToBring">
+          <ScalarProperty Name="ToBringItemId" ColumnName="ToBringItemId" />
+          <ScalarProperty Name="DToBringItemName" ColumnName="DToBringItemName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserMusicTypes">
+      <EntityTypeMapping TypeName="FindMyPartyModel.UserMusicTypes">
+        <MappingFragment StoreEntitySet="UserMusicTypes">
+          <ScalarProperty Name="UserMusicTypeId" ColumnName="UserMusicTypeId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="MusicTypeId" ColumnName="MusicTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="FindMyPartyModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="Forename" ColumnName="Forename" />
+          <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="PrivatePartyFood" TypeName="FindMyPartyModel.PrivatePartyFood" StoreEntitySet="PrivatePartyFood">
+      <EndProperty Name="Food">
+        <ScalarProperty Name="FoodItemId" ColumnName="FoodItemId" />
+      </EndProperty>
+      <EndProperty Name="PrivateParty">
+        <ScalarProperty Name="PrivatePartyId" ColumnName="PrivatePartyId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

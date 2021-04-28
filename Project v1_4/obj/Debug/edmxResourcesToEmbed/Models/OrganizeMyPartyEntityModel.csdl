@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FindMyPartyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Countries">
+    <Key>
+      <PropertyRef Name="CountryId" />
+    </Key>
+    <Property Name="CountryId" Type="Int32" Nullable="false" />
+    <Property Name="CountryName" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Table_1_Countries" FromRole="Countries" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Currency">
+    <Key>
+      <PropertyRef Name="CurrencyId" />
+    </Key>
+    <Property Name="CurrencyId" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CurrencyName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="CurrencySymbol" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Drink">
+    <Key>
+      <PropertyRef Name="DrinkItemId" />
+    </Key>
+    <Property Name="DrinkItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DrinkItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PrivatePartyDrink" Relationship="Self.FK__PrivatePa__Drink__540C7B00" FromRole="Drink" ToRole="PrivatePartyDrink" />
+    <NavigationProperty Name="PrivatePartyDrink1" Relationship="Self.FK__PrivatePa__Drink__56E8E7AB" FromRole="Drink" ToRole="PrivatePartyDrink" />
+  </EntityType>
+  <EntityType Name="Food">
+    <Key>
+      <PropertyRef Name="FoodItemId" />
+    </Key>
+    <Property Name="FoodItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FoodItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PrivateParty" Relationship="Self.PrivatePartyFood" FromRole="Food" ToRole="PrivateParty" />
+  </EntityType>
+  <EntityType Name="MusicTypes">
+    <Key>
+      <PropertyRef Name="MusicTypeId" />
+    </Key>
+    <Property Name="MusicTypeId" Type="Int32" Nullable="false" />
+    <Property Name="MusicTypeName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="UserMusicTypes" Relationship="Self.FK_Table_1_MusicTypes" FromRole="MusicTypes" ToRole="UserMusicTypes" />
+  </EntityType>
+  <EntityType Name="PrivateParty">
+    <Key>
+      <PropertyRef Name="PrivatePartyId" />
+    </Key>
+    <Property Name="PrivatePartyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HostUserId" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="DescriptionName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="LineAdress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PostCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="170" FixedLength="false" Unicode="false" />
+    <Property Name="CountryId" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="DressCode" Type="String" MaxLength="170" FixedLength="false" Unicode="false" />
+    <Property Name="ParticipationFee" Type="Decimal" Precision="7" Scale="2" />
+    <NavigationProperty Name="PrivatePartyDrink" Relationship="Self.FK__PrivatePa__Priva__503BEA1C" FromRole="PrivateParty" ToRole="PrivatePartyDrink" />
+    <NavigationProperty Name="PrivatePartyDrink1" Relationship="Self.FK__PrivatePa__Priva__55009F39" FromRole="PrivateParty" ToRole="PrivatePartyDrink" />
+    <NavigationProperty Name="PrivatePartyDrink2" Relationship="Self.FK__PrivatePa__Priva__57DD0BE4" FromRole="PrivateParty" ToRole="PrivatePartyDrink" />
+    <NavigationProperty Name="Food" Relationship="Self.PrivatePartyFood" FromRole="PrivateParty" ToRole="Food" />
+  </EntityType>
+  <EntityType Name="PrivatePartyDrink">
+    <Key>
+      <PropertyRef Name="PrivatePartyId" />
+      <PropertyRef Name="DrinkItemId" />
+    </Key>
+    <Property Name="PrivatePartyId" Type="Int32" Nullable="false" />
+    <Property Name="DrinkItemId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Drink" Relationship="Self.FK__PrivatePa__Drink__540C7B00" FromRole="PrivatePartyDrink" ToRole="Drink" />
+    <NavigationProperty Name="Drink1" Relationship="Self.FK__PrivatePa__Drink__56E8E7AB" FromRole="PrivatePartyDrink" ToRole="Drink" />
+    <NavigationProperty Name="PrivateParty" Relationship="Self.FK__PrivatePa__Priva__503BEA1C" FromRole="PrivatePartyDrink" ToRole="PrivateParty" />
+    <NavigationProperty Name="PrivateParty1" Relationship="Self.FK__PrivatePa__Priva__55009F39" FromRole="PrivatePartyDrink" ToRole="PrivateParty" />
+    <NavigationProperty Name="PrivateParty2" Relationship="Self.FK__PrivatePa__Priva__57DD0BE4" FromRole="PrivatePartyDrink" ToRole="PrivateParty" />
+  </EntityType>
+  <EntityType Name="ToBring">
+    <Key>
+      <PropertyRef Name="ToBringItemId" />
+    </Key>
+    <Property Name="ToBringItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DToBringItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="UserMusicTypes">
+    <Key>
+      <PropertyRef Name="UserMusicTypeId" />
+    </Key>
+    <Property Name="UserMusicTypeId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="MusicTypeId" Type="Int32" />
+    <NavigationProperty Name="MusicTypes" Relationship="Self.FK_Table_1_MusicTypes" FromRole="UserMusicTypes" ToRole="MusicTypes" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Table_1_User" FromRole="UserMusicTypes" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Birthdate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PostCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CountryId" Type="Int32" Nullable="false" />
+    <Property Name="Forename" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="Lastname" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Countries" Relationship="Self.FK_Table_1_Countries" FromRole="Users" ToRole="Countries" />
+    <NavigationProperty Name="UserMusicTypes" Relationship="Self.FK_Table_1_User" FromRole="Users" ToRole="UserMusicTypes" />
+  </EntityType>
+  <Association Name="FK_Table_1_Countries">
+    <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Countries">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PrivatePa__Drink__540C7B00">
+    <End Role="Drink" Type="Self.Drink" Multiplicity="1" />
+    <End Role="PrivatePartyDrink" Type="Self.PrivatePartyDrink" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Drink">
+        <PropertyRef Name="DrinkItemId" />
+      </Principal>
+      <Dependent Role="PrivatePartyDrink">
+        <PropertyRef Name="DrinkItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PrivatePa__Drink__56E8E7AB">
+    <End Role="Drink" Type="Self.Drink" Multiplicity="1" />
+    <End Role="PrivatePartyDrink" Type="Self.PrivatePartyDrink" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Drink">
+        <PropertyRef Name="DrinkItemId" />
+      </Principal>
+      <Dependent Role="PrivatePartyDrink">
+        <PropertyRef Name="DrinkItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Table_1_MusicTypes">
+    <End Role="MusicTypes" Type="Self.MusicTypes" Multiplicity="0..1" />
+    <End Role="UserMusicTypes" Type="Self.UserMusicTypes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MusicTypes">
+        <PropertyRef Name="MusicTypeId" />
+      </Principal>
+      <Dependent Role="UserMusicTypes">
+        <PropertyRef Name="MusicTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PrivatePa__Priva__503BEA1C">
+    <End Role="PrivateParty" Type="Self.PrivateParty" Multiplicity="1" />
+    <End Role="PrivatePartyDrink" Type="Self.PrivatePartyDrink" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrivateParty">
+        <PropertyRef Name="PrivatePartyId" />
+      </Principal>
+      <Dependent Role="PrivatePartyDrink">
+        <PropertyRef Name="PrivatePartyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PrivatePa__Priva__55009F39">
+    <End Role="PrivateParty" Type="Self.PrivateParty" Multiplicity="1" />
+    <End Role="PrivatePartyDrink" Type="Self.PrivatePartyDrink" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrivateParty">
+        <PropertyRef Name="PrivatePartyId" />
+      </Principal>
+      <Dependent Role="PrivatePartyDrink">
+        <PropertyRef Name="PrivatePartyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PrivatePa__Priva__57DD0BE4">
+    <End Role="PrivateParty" Type="Self.PrivateParty" Multiplicity="1" />
+    <End Role="PrivatePartyDrink" Type="Self.PrivatePartyDrink" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrivateParty">
+        <PropertyRef Name="PrivatePartyId" />
+      </Principal>
+      <Dependent Role="PrivatePartyDrink">
+        <PropertyRef Name="PrivatePartyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Table_1_User">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="UserMusicTypes" Type="Self.UserMusicTypes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserMusicTypes">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PrivatePartyFood">
+    <End Role="Food" Type="Self.Food" Multiplicity="*" />
+    <End Role="PrivateParty" Type="Self.PrivateParty" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="FindMyPartyEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Countries" EntityType="Self.Countries" />
+    <EntitySet Name="Currency" EntityType="Self.Currency" />
+    <EntitySet Name="Drink" EntityType="Self.Drink" />
+    <EntitySet Name="Food" EntityType="Self.Food" />
+    <EntitySet Name="MusicTypes" EntityType="Self.MusicTypes" />
+    <EntitySet Name="PrivateParty" EntityType="Self.PrivateParty" />
+    <EntitySet Name="PrivatePartyDrink" EntityType="Self.PrivatePartyDrink" />
+    <EntitySet Name="ToBring" EntityType="Self.ToBring" />
+    <EntitySet Name="UserMusicTypes" EntityType="Self.UserMusicTypes" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <AssociationSet Name="FK_Table_1_Countries" Association="Self.FK_Table_1_Countries">
+      <End Role="Countries" EntitySet="Countries" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PrivatePa__Drink__540C7B00" Association="Self.FK__PrivatePa__Drink__540C7B00">
+      <End Role="Drink" EntitySet="Drink" />
+      <End Role="PrivatePartyDrink" EntitySet="PrivatePartyDrink" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PrivatePa__Drink__56E8E7AB" Association="Self.FK__PrivatePa__Drink__56E8E7AB">
+      <End Role="Drink" EntitySet="Drink" />
+      <End Role="PrivatePartyDrink" EntitySet="PrivatePartyDrink" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Table_1_MusicTypes" Association="Self.FK_Table_1_MusicTypes">
+      <End Role="MusicTypes" EntitySet="MusicTypes" />
+      <End Role="UserMusicTypes" EntitySet="UserMusicTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PrivatePa__Priva__503BEA1C" Association="Self.FK__PrivatePa__Priva__503BEA1C">
+      <End Role="PrivateParty" EntitySet="PrivateParty" />
+      <End Role="PrivatePartyDrink" EntitySet="PrivatePartyDrink" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PrivatePa__Priva__55009F39" Association="Self.FK__PrivatePa__Priva__55009F39">
+      <End Role="PrivateParty" EntitySet="PrivateParty" />
+      <End Role="PrivatePartyDrink" EntitySet="PrivatePartyDrink" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PrivatePa__Priva__57DD0BE4" Association="Self.FK__PrivatePa__Priva__57DD0BE4">
+      <End Role="PrivateParty" EntitySet="PrivateParty" />
+      <End Role="PrivatePartyDrink" EntitySet="PrivatePartyDrink" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Table_1_User" Association="Self.FK_Table_1_User">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserMusicTypes" EntitySet="UserMusicTypes" />
+    </AssociationSet>
+    <AssociationSet Name="PrivatePartyFood" Association="Self.PrivatePartyFood">
+      <End Role="Food" EntitySet="Food" />
+      <End Role="PrivateParty" EntitySet="PrivateParty" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

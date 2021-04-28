@@ -36,25 +36,30 @@ function selectMusicType() {
         var $this = $(this);
         musicTypeChoosen.push({ id: parseInt($this.val()) });
     });
-     for (var i = 0; i < musicTypeChoosen.length; i++) {
-         var newRow = document.getElementById('musicChoosensTable').insertRow(i);
-         var musicAdded = newRow.insertCell();
-         musicAdded.style = "color: green";
-         var x = document.createElement("BUTTON");
-         var t = document.createTextNode("Delete");
-         x.appendChild(t);
-         //document.body.appendChild(x);
-         musicAdded.innerHTML = $("#MusicTypeId option:disabled")[i].text + body.appendChild(x);
-        
+    for (var i = 0; i < musicTypeChoosen.length; i++) {
+        var newRow = document.getElementById('musicChoosensTable').insertRow(i);
+        var musicStyleAdded = newRow.insertCell();
+        musicStyleAdded.style = "color: green";
+        var x = document.createElement("BUTTON");
+        var t = document.createTextNode("Delete");
+        x.appendChild(t);
+        musicStyleAdded.innerHTML = $("#MusicTypeId option:disabled")[i].text;
+        musicStyleAdded.id = $("#MusicTypeId option:disabled")[i].value;
+        var cell1 = newRow.insertCell(0);
+        var element1 = document.createElement("input");
+        element1.type = "checkbox";
+        element1.name = "chkbox[]";
+        cell1.appendChild(element1);
+
     };
 
     //sorts the table by aplphabetical order
-    var table, rows, switching, i, x, y, shouldSwitch;
-    table = document.getElementById("musicChoosensTable");
+    var musicChoosenTable, rows, switching, i, x, y, shouldSwitch;
+    musicChoosenTable = document.getElementById("musicChoosensTable");
     switching = true;
     while (switching) {
         switching = false;
-        rows = table.rows;
+        rows = musicChoosenTable.rows;
         for (i = 0; i < (rows.length - 1); i++) {
             shouldSwitch = false;
             x = rows[i].getElementsByTagName("td")[0];
@@ -304,7 +309,7 @@ function saveContact() {
                 "MusicTypesSelected": result
             },
             success: function () {
-                verification();
+                //verification();
                 window.location.href = '/Home/Index'
             },
             error: function (xhr) {

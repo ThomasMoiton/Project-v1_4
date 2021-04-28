@@ -14,7 +14,16 @@ namespace Project_v1_4.Models
     
     public partial class Food
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Food()
+        {
+            this.PrivateParty = new HashSet<PrivateParty>();
+        }
+    
         public int FoodItemId { get; set; }
         public string FoodItemName { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PrivateParty> PrivateParty { get; set; }
     }
 }

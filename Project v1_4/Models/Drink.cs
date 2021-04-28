@@ -14,7 +14,19 @@ namespace Project_v1_4.Models
     
     public partial class Drink
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Drink()
+        {
+            this.PrivatePartyDrink = new HashSet<PrivatePartyDrink>();
+            this.PrivatePartyDrink1 = new HashSet<PrivatePartyDrink>();
+        }
+    
         public int DrinkItemId { get; set; }
         public string DrinkItemName { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PrivatePartyDrink> PrivatePartyDrink { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PrivatePartyDrink> PrivatePartyDrink1 { get; set; }
     }
 }

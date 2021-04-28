@@ -14,6 +14,15 @@ namespace Project_v1_4.Models
     
     public partial class PrivateParty
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public PrivateParty()
+        {
+            this.PrivatePartyDrink = new HashSet<PrivatePartyDrink>();
+            this.PrivatePartyDrink1 = new HashSet<PrivatePartyDrink>();
+            this.PrivatePartyDrink2 = new HashSet<PrivatePartyDrink>();
+            this.Food = new HashSet<Food>();
+        }
+    
         public int PrivatePartyId { get; set; }
         public string HostUserId { get; set; }
         public System.DateTime StartDate { get; set; }
@@ -25,5 +34,14 @@ namespace Project_v1_4.Models
         public string CountryId { get; set; }
         public string DressCode { get; set; }
         public Nullable<decimal> ParticipationFee { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PrivatePartyDrink> PrivatePartyDrink { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PrivatePartyDrink> PrivatePartyDrink1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PrivatePartyDrink> PrivatePartyDrink2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Food> Food { get; set; }
     }
 }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="40edfa4f7c2648dfa90e42c1a8d20058" Name="Diagram1">
+        <EntityTypeShape EntityType="FindMyPartyModel.Countries" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FindMyPartyModel.Currency" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FindMyPartyModel.Drink" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FindMyPartyModel.Food" Width="1.5" PointX="1.5" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FindMyPartyModel.MusicTypes" Width="1.5" PointX="5" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FindMyPartyModel.PrivateParty" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FindMyPartyModel.PrivatePartyDrink" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="FindMyPartyModel.ToBring" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FindMyPartyModel.UserMusicTypes" Width="1.5" PointX="7.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FindMyPartyModel.Users" Width="1.5" PointX="5" PointY="5" IsExpanded="true" />
+        <AssociationConnector Association="FindMyPartyModel.FK_Table_1_Countries" ManuallyRouted="false" />
+        <AssociationConnector Association="FindMyPartyModel.FK__PrivatePa__Drink__540C7B00" ManuallyRouted="false" />
+        <AssociationConnector Association="FindMyPartyModel.FK__PrivatePa__Drink__56E8E7AB" ManuallyRouted="false" />
+        <AssociationConnector Association="FindMyPartyModel.FK_Table_1_MusicTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="FindMyPartyModel.FK__PrivatePa__Priva__503BEA1C" ManuallyRouted="false" />
+        <AssociationConnector Association="FindMyPartyModel.FK__PrivatePa__Priva__55009F39" ManuallyRouted="false" />
+        <AssociationConnector Association="FindMyPartyModel.FK__PrivatePa__Priva__57DD0BE4" ManuallyRouted="false" />
+        <AssociationConnector Association="FindMyPartyModel.FK_Table_1_User" ManuallyRouted="false" />
+        <AssociationConnector Association="FindMyPartyModel.PrivatePartyFood" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

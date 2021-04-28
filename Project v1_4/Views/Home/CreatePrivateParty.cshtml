@@ -1,5 +1,6 @@
 ﻿@model Project_v1_4.Models.PrivatePartyModel
 <DOCTYPE html>
+    @Html.HiddenFor(model => model.HostEmail)
     <html>
     <head>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -7,199 +8,287 @@
         <script src="https://cdn.syncfusion.com/16.4.0.52/js/web/ej.web.all.min.js"></script>
         <script src="~/Scripts/PrivateParty.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBxRQCh2uN4dbtC925xmgECqyHVGJxtK8&library=places&callback=initAutocomplete" async defer></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,500"
+              rel="stylesheet" />
+
         <script>
+            //let autocomplete;
+
+            //function initAutocomplete() {
+            //    autocomplete = new google.maps.places.Autocomplete(document.getElementById('autocomplete'),
+            //        {
+            //            types: ['establishement'],
+            //            componentRestrictions: { 'country': ['AU'] },
+            //            fields: ['place_id', 'geometry', 'name']
+            //        });
+            //}
+            // This sample uses the Places Autocomplete widget to:
+            // 1. Help the user select a place
+            // 2. Retrieve the address components associated with that place
+            // 3. Populate the form fields with those address components.
+            // This sample requires the Places library, Maps JavaScript API.
+            // Include the libraries=places parameter when you first load the API.
+            // For example: <script
+            // src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
             let autocomplete;
+            let address1Field;
+            let address2Field;
+            let postalField;
 
             function initAutocomplete() {
-                autocomplete = new google.maps.places.Autocomplete(document.getElementById('autocomplete'),
-                    {
-                        types: ['establishement'],
-                        componentRestrictions: { 'country': ['AU'] },
-                        fields: ['place_id', 'geometry', 'name']
-                    });
+                address1Field = document.querySelector("#ship-address");
+                address2Field = document.querySelector("#address2");
+                postalField = document.querySelector("#postcode");
+                // Create the autocomplete object, restricting the search predictions to
+                // addresses in the US and Canada.
+                autocomplete = new google.maps.places.Autocomplete(address1Field, {
+                    componentRestrictions: { country: ["us", "ca"] },
+                    fields: ["address_components", "geometry"],
+                    types: ["address"],
+                });
+                address1Field.focus();
+                // When the user selects an address from the drop-down, populate the
+                // address fields in the form.
+                autocomplete.addListener("place_changed", fillInAddress);
             }
+
+            function fillInAddress() {
+                // Get the place details from the autocomplete object.
+                const place = autocomplete.getPlace();
+                let address1 = "";
+                let postcode = "";
+
+                // Get each component of the address from the place details,
+                // and then fill-in the corresponding field on the form.
+                // place.address_components are google.maps.GeocoderAddressComponent objects
+                // which are documented at http://goo.gle/3l5i5Mr
+                for (const component of place.address_components) {
+                    const componentType = component.types[0];
+
+                    switch (componentType) {
+                        case "street_number": {
+                            address1 = `${component.long_name} ${address1}`;
+                            break;
+                        }
+
+                        case "route": {
+                            address1 += component.short_name;
+                            break;
+                        }
+
+                        case "postal_code": {
+                            postcode = `${component.long_name}${postcode}`;
+                            break;
+                        }
+
+                        case "postal_code_suffix": {
+                            postcode = `${postcode}-${component.long_name}`;
+                            break;
+                        }
+                        case "locality":
+                            document.querySelector("#locality").value = component.long_name;
+                            break;
+
+                        case "administrative_area_level_1": {
+                            document.querySelector("#state").value = component.short_name;
+                            break;
+                        }
+                        case "country":
+                            document.querySelector("#country").value = component.long_name;
+                            break;
+                    }
+                }
+                address1Field.value = address1;
+                postalField.value = postcode;
+                // After filling the form with address components from the Autocomplete
+                // prediction, set cursor focus on the second address line to encourage
+                // entry of subpremise information such as apartment, unit, or floor number.
+                address2Field.focus();
+            }
+
         </script>
 
         <link href="~/Content/Site.css" rel="stylesheet" />
     </head>
     <body>
-        <h2 class="text-center">Private Party</h2>
-        <h4 class="text-center">Complete this formular to create a private party</h4>
-        <br />
-        <div class="text-center">
-            <div class=" col-lg-4 text-center left" id="divGeneralInfo">
-                <div title="">
-                    <p style="font-weight: bold; color:#0000ff">GENERAL INFORMATION:</p>
-                </div>
+    <h2 class="text-center">Private Party</h2>
+    <h4 class="text-center">Complete this formular to create a private party</h4>
+    <br />
+    <div class="text-center">
+        <div class=" col-lg-4 text-center left" id="divGeneralInfo">
+            <div title="">
+                <p style="font-weight: bold; color:#0000ff">GENERAL INFORMATION:</p>
+            </div>
 
-                <br />
-                <label style="color: black;">Enter the start date and time of the party here</label>
-                <br />
-                <input id="startDateId" type="datetime-local" class="datepicker" name="Start Date" onkeyup="birthdateValidate()" value="1998-05-27" />
-                <br />
-                <br />
-                <label style="color: black;">Enter the end date and time of the party here</label>
-                <br />
-                <input id="endDateId" type="datetime-local" class="datepicker" name="End Date" onkeyup="birthdateValidate()" value="1998-05-27" />
-                <br />
-                <br />
-                @Html.TextBoxFor(model => model.DescriptionName, new { @class = "fadeIn second", @placeholder = "Description name (optional)", @value = "descriptionName", @name = "descriptionName", @maxlength = "255" })
-                <br />
-                <br />
-                <br />
-                @Html.TextBoxFor(model => model.AddressLine, new { @class = "fadeIn second", @placeholder = "Address Line (optional)", @value = "adressLine", @name = "adressLine", @maxlength = "50" })
-
-                <input id="autocomplete" placeholder="Enter a place" type="text">
-                <br />
-                <br />
-                @Html.TextBoxFor(model => model.City, new { @class = "fadeIn second", @placeholder = "City (optional)", @value = "city", @name = "city", @maxlength = "170" })
-                <br />
-                <br />
-                @Html.TextBoxFor(model => model.PostCode, new { @class = "fadeIn second", @placeholder = "Post Code (optional)", @value = "postCode", @name = "postCode", @maxlength = "10" })
-                <br />
-                <br />
-                <row>
-                    <label> Hosted Country (optional):  </label>
-                    <br />
-                    @Html.DropDownList("CountryId", new SelectList(ViewBag.Countries, "CountryId", "CountryName"))
-                </row>
-                <br />
-                <br />
-            </div>
-            <div class=" col-lg-4 text-center center-block" id="divMusicAndFoodMenu">
-                @*<h4 class="text-center">Music Type, dress code and menus:</h4>*@
-                <div title="">
-                    <p style="font-weight: bold; color:#0000ff">MUSIC TYPES & DRESS CODE & FOOD MENU:</p>
-                </div>
-                <label>Please select the Music type(s) that will be played here:</label>
-                <br />
-                @Html.DropDownList("MusicStyleId", new SelectList(ViewBag.Musics, "MusicTypeId", "MusicTypeName"))
-                <button type="button" class="btn-save btn btn-primary btn-sm" onclick="selectMusicType()" id="selectMusicTypeButton">Select</button>
-                <br />
-                <br />
-                <label>Here are the Music Type(s) that will be played:</label>
-                <table id="musicChoosensTable" style="margin-right: auto; margin-left: auto;">
-                    <tbody>
-                    </tbody>
-                </table>
-                <br />
-                @*/adjustable input field*@
-                <label> Please enter some information about the Dress Code (optional):  </label>
-                <br />
-                <br />
-                @Html.TextAreaFor(model => model.DressCode, new { @maxlength = "170" })
-                <br />
-                <br />
-                <br />
-                <row>
-                    <label> Please select some food your will provide here: </label>
-                    <br />
-                    @Html.DropDownList("FoodItemId", new SelectList(ViewBag.Food, "FoodItemId", "FoodItemName"))
-                    <button type="button" class="btn-save btn btn-primary btn-sm" onclick="selectFoodItem()" id="selectFoodItemButton">Select</button>
-                    <br />
-                    <br />
-                    <label>This is your food menu:</label>
-                    <table id="foodMenuTable" style="margin-right: auto; margin-left: auto;">
-                        <tbody>
-                        </tbody>
-                    </table>
-                    <div>
-                        <button type="button" class="glyphicon glyphicon-minus-sign" style="color:red" onclick="deleteFoodItemRow('foodMenuTable')" />
-                    </div>
-                </row>
-                <br />
-                <label>Enter other food items you will provide here:</label>
-                <table id="otherFoodItemTable" style="margin-right: auto; margin-left: auto;">
-                    <tbody>
-                        <TR>
-                            <TD><INPUT type="checkbox" name="chk" /></TD>
-                            <TD id="otherFoodItemTDToDelete"> <INPUT type="text" id="otherFoodItem0" /> </TD>
-                            <TD> <label id="hiddenLabel0" type="text" style="visibility:hidden" /></TD>
-                        </TR>
-                    </tbody>
-                </table>
-                <div>
-                    <button type="button" class="glyphicon glyphicon-plus-sign" style="color:green" onclick="addOtherFoodItemTableRow('otherFoodItemTable')" />
-                    <button type="button" class="glyphicon glyphicon-minus-sign" style="color:red" onclick="deleteOtherFoodItemTableRow('otherFoodItemTable')" />
-                </div>
-            </div>
-            <div class=" col-lg-4 text-center right" id="divOtherItems">
-                <div title="">
-                    <p style="font-weight: bold; color:#0000ff">DRINK MENU & ITEMS TO BRING & PARTICIPATION FEE:</p>
-                </div>
-                <row>
-                    <label> Please select some drinks your will provide here: </label>
-                    <br />
-                    @Html.DropDownList("DrinkItemId", new SelectList(ViewBag.Drink, "DrinkItemId", "DrinkItemName"))
-                    <button type="button" class="btn-save btn btn-primary btn-sm" onclick="selectDrinkItem()" id="selectDrinkItemButton">Select</button>
-                </row>
-                <br />
-                <br />
-                <label>Here are the drinks you will provide:</label>
-                <table id="drinkItemTable" style="margin-right: auto; margin-left: auto;">
-                    <tbody>
-                    </tbody>
-                </table>
-                <div>
-                    <button type="button" class="glyphicon glyphicon-minus-sign" style="color:red" onclick="deleteDrinkTableRow('drinkItemTable')" />
-                </div>
-                <br />
-                <label>Enter other drinks you will provide here:</label>
-                <table id="otherDrinkItemTable" style="margin-right: auto; margin-left: auto;">
-                    <tbody>
-                        <TR>
-                            <TD><INPUT type="checkbox" name="chk" /></TD>
-                            <TD id="otherDrinkItemTDToDelete"> <INPUT type="text" id="otherDrinkItem0" /> </TD>
-                        </TR>
-                    </tbody>
-                </table>
-                <div>
-                    <button type="button" class="glyphicon glyphicon-plus-sign" style="color:green" onclick="addOtherDrinkTableRow('otherDrinkItemTable')" />
-                    <button type="button" class="glyphicon glyphicon-minus-sign" style="color:red" onclick="deleteOtheToBringTableRow('otherDrinkItemTable')" />
-                </div>
-                <br />
-                <row>
-                    <label> Items that should be brought: </label>
-                    <br />
-                    @Html.DropDownList("ToBringItemId", new SelectList(ViewBag.ToBring, "ToBringItemId", "DToBringItemName"))
-                    <button type="button" class="btn-save btn btn-primary btn-sm" onclick="selectToBringItem()" id="selectToBringItemButton">Select</button>
-                </row>
-                <br />
-                <table id="toBringItemTable" style="margin-right: auto; margin-left: auto;">
-                    <tbody>
-                    </tbody>
-                </table>
-                <div>
-                    <button type="button" class="glyphicon glyphicon-minus-sign" style="color:red" onclick="deleteToBringTableRow('toBringItemTable')" />
-                </div>
-                <br />
-                <label>Enter other items that should be brought:</label>
-                <table id="otherToBringItemTable" style="margin-right: auto; margin-left: auto;">
-                    <tbody>
-                        <TR>
-                            <TD><INPUT type="checkbox" name="chk" /></TD>
-                            <TD id="otherToBringItemTDToDelete"> <INPUT type="text" id="otherToBringItem0" /> </TD>
-                            <TD> <label id="hiddenLabel0" type="text" style="visibility:hidden" /></TD>
-                        </TR>
-                    </tbody>
-                </table>
-                <div>
-                    <button type="button" class="glyphicon glyphicon-plus-sign" style="color:green" onclick="addOtherToBringItemTableRow('otherToBringItemTable')" />
-                    <button type="button" class="glyphicon glyphicon-minus-sign" style="color:red" onclick="deleteOtheToBringTableRow('otherToBringItemTable')" />
-                </div>
-                <br />
-                <label>Please enter the Partcipation Fee:</label>
-                <br />
-                <input type="number" min="1" max="999" style="text-align: center;">
-                @Html.DropDownList("CurrencyId", new SelectList(ViewBag.Currency, "CurrencyId", "CurrencySymbol"))
-            </div>
-        </div>
-        <div class="col-md-12 text-center">
             <br />
-            <label></label>
-            <button type="button" id="savePrivatePartyButton" style="background-color: #4CAF50; border: none;color: white;padding: 15px 32px; text-align: center; text-decoration: none;display: inline-block; font-size: 16px;" onclick="saveContact()">Save</button>
+            <label style="color: black;">Enter the start date and time of the party here</label>
+            <br />
+            <input id="startDateId" type="datetime-local" class="datepicker" name="Start Date" onkeyup="birthdateValidate()" value="1998-05-27" />
+            <br />
+            <br />
+            <label style="color: black;">Enter the end date and time of the party here</label>
+            <br />
+            <input id="endDateId" type="datetime-local" class="datepicker" name="End Date" onkeyup="birthdateValidate()" value="1998-05-27" />
+            <br />
+            <br />
+            @Html.TextBoxFor(model => model.DescriptionName, new { @class = "fadeIn second", @placeholder = "Description name (optional)", @value = "descriptionName", @name = "descriptionName", @maxlength = "255" })
+            <br />
+            <br />
+            <br />
+            @Html.TextBoxFor(model => model.AddressLine, new { @class = "fadeIn second", @placeholder = "Address Line (optional)", @value = "adressLine", @name = "adressLine", @maxlength = "50" })
+
+            <input id="autocomplete" placeholder="Enter a place" type="text">
+            <br />
+            <br />
+            @Html.TextBoxFor(model => model.City, new { @class = "fadeIn second", @placeholder = "City (optional)", @value = "city", @name = "city", @maxlength = "170" })
+            <br />
+            <br />
+            @Html.TextBoxFor(model => model.PostCode, new { @class = "fadeIn second", @placeholder = "Post Code (optional)", @value = "postCode", @name = "postCode", @maxlength = "10" })
+            <br />
+            <br />
+            <row>
+                <label> Hosted Country (optional):  </label>
+                <br />
+                @Html.DropDownList("CountryId", new SelectList(ViewBag.Countries, "CountryId", "CountryName"))
+            </row>
+            <br />
+            <br />
         </div>
-    </body>
-</html>
+        <div class=" col-lg-4 text-center center-block" id="divMusicAndFoodMenu">
+    <div title="">
+    <p style="font-weight: bold; color:#0000ff">MUSIC TYPES & DRESS CODE & FOOD MENU:</p>
+</div>
+<label>Please select the Music type(s) that will be played here:</label>
+<br />
+@Html.DropDownList("MusicStyleId", new SelectList(ViewBag.Musics, "MusicTypeId", "MusicTypeName"))
+<button type="button" class="btn-save btn btn-primary btn-sm" onclick="selectMusicType()" id="selectMusicTypeButton">Select</button>
+<br />
+<br />
+<label>Here are the Music Type(s) that will be played:</label>
+<table id="musicChoosensTable" style="margin-right: auto; margin-left: auto;">
+    <tbody>
+    </tbody>
+</table>
+<br />
+    /adjustable input field
+    <label> Please enter some information about the Dress Code (optional):  </label>
+            <br />
+            <br />
+            @Html.TextAreaFor(model => model.DressCode, new { @maxlength = "170" })
+            <br />
+            <br />
+            <br />
+            <row>
+                <label> Please select some food your will provide here: </label>
+                <br />
+                @Html.DropDownList("FoodItemId", new SelectList(ViewBag.Food, "FoodItemId", "FoodItemName"))
+                <button type="button" class="btn-save btn btn-primary btn-sm" onclick="selectFoodItem()" id="selectFoodItemButton">Select</button>
+                <br />
+                <br />
+                <label>This is your food menu:</label>
+                <table id="foodMenuTable" style="margin-right: auto; margin-left: auto;">
+                    <tbody>
+                    </tbody>
+                </table>
+                <div>
+                    <button type="button" class="glyphicon glyphicon-minus-sign" style="color:red" onclick="deleteFoodItemRow('foodMenuTable')" />
+                </div>
+            </row>
+            <br />
+            <label>Enter other food items you will provide here:</label>
+            <table id="otherFoodItemTable" style="margin-right: auto; margin-left: auto;">
+                <tbody>
+                    <TR>
+                        <TD><INPUT type="checkbox" name="chk" /></TD>
+                        <TD id="otherFoodItemTDToDelete"> <INPUT type="text" id="otherFoodItem0" /> </TD>
+                        <TD> <label id="hiddenLabel0" type="text" style="visibility:hidden" /></TD>
+                    </TR>
+                </tbody>
+            </table>
+            <div>
+                <button type="button" class="glyphicon glyphicon-plus-sign" style="color:green" onclick="addOtherFoodItemTableRow('otherFoodItemTable')" />
+                <button type="button" class="glyphicon glyphicon-minus-sign" style="color:red" onclick="deleteOtherFoodItemTableRow('otherFoodItemTable')" />
+            </div>
+        </div>
+        <div class=" col-lg-4 text-center right" id="divOtherItems">
+            <div title="">
+                <p style="font-weight: bold; color:#0000ff">DRINK MENU & ITEMS TO BRING & PARTICIPATION FEE:</p>
+            </div>
+            <row>
+                <label> Please select some drinks your will provide here: </label>
+                <br />
+                @Html.DropDownList("DrinkItemId", new SelectList(ViewBag.Drink, "DrinkItemId", "DrinkItemName"))
+                <button type="button" class="btn-save btn btn-primary btn-sm" onclick="selectDrinkItem()" id="selectDrinkItemButton">Select</button>
+            </row>
+            <br />
+            <br />
+            <label>Here are the drinks you will provide:</label>
+            <table id="drinkItemTable" style="margin-right: auto; margin-left: auto;">
+                <tbody>
+                </tbody>
+            </table>
+            <div>
+                <button type="button" class="glyphicon glyphicon-minus-sign" style="color:red" onclick="deleteDrinkTableRow('drinkItemTable')" />
+            </div>
+            <br />
+            <label>Enter other drinks you will provide here:</label>
+            <table id="otherDrinkItemTable" style="margin-right: auto; margin-left: auto;">
+                <tbody>
+                    <TR>
+                        <TD><INPUT type="checkbox" name="chk" /></TD>
+                        <TD id="otherDrinkItemTDToDelete"> <INPUT type="text" id="otherDrinkItem0" /> </TD>
+                    </TR>
+                </tbody>
+            </table>
+            <div>
+                <button type="button" class="glyphicon glyphicon-plus-sign" style="color:green" onclick="addOtherDrinkTableRow('otherDrinkItemTable')" />
+                <button type="button" class="glyphicon glyphicon-minus-sign" style="color:red" onclick="deleteOtheToBringTableRow('otherDrinkItemTable')" />
+            </div>
+            <br />
+            <row>
+                <label> Items that should be brought: </label>
+                <br />
+                @Html.DropDownList("ToBringItemId", new SelectList(ViewBag.ToBring, "ToBringItemId", "DToBringItemName"))
+                <button type="button" class="btn-save btn btn-primary btn-sm" onclick="selectToBringItem()" id="selectToBringItemButton">Select</button>
+            </row>
+            <br />
+            <table id="toBringItemTable" style="margin-right: auto; margin-left: auto;">
+                <tbody>
+                </tbody>
+            </table>
+            <div>
+                <button type="button" class="glyphicon glyphicon-minus-sign" style="color:red" onclick="deleteToBringTableRow('toBringItemTable')" />
+            </div>
+            <br />
+            <label>Enter other items that should be brought:</label>
+            <table id="otherToBringItemTable" style="margin-right: auto; margin-left: auto;">
+                <tbody>
+                    <TR>
+                        <TD><INPUT type="checkbox" name="chk" /></TD>
+                        <TD id="otherToBringItemTDToDelete"> <INPUT type="text" id="otherToBringItem0" /> </TD>
+                        <TD> <label id="hiddenLabel0" type="text" style="visibility:hidden" /></TD>
+                    </TR>
+                </tbody>
+            </table>
+            <div>
+                <button type="button" class="glyphicon glyphicon-plus-sign" style="color:green" onclick="addOtherToBringItemTableRow('otherToBringItemTable')" />
+                <button type="button" class="glyphicon glyphicon-minus-sign" style="color:red" onclick="deleteOtheToBringTableRow('otherToBringItemTable')" />
+            </div>
+            <br />
+            <label>Please enter the Partcipation Fee:</label>
+            <br />
+            <input type="number" min="1" max="999" style="text-align: center;">
+            @Html.DropDownList("CurrencyId", new SelectList(ViewBag.Currency, "CurrencyId", "CurrencySymbol"))
+        </div>
+    </div>
+    <div class="col-md-12 text-center">
+        <br />
+        <label></label>
+        <button type="button" id="savePrivatePartyButton" style="background-color: #4CAF50; border: none;color: white;padding: 15px 32px; text-align: center; text-decoration: none;display: inline-block; font-size: 16px;" onclick="saveContact()">Save</button>
+    </div>
+</body>
+   
+    </html>
 
 

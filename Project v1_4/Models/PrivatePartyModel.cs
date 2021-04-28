@@ -18,11 +18,12 @@ namespace Project_v1_4.Models
         public int ToBringItemId { get; set; }
         public string DressCode { get; set; }
         public int ParticipationFee { get; set; }
-        public List<UserMusicStyle> MusicTypeChoosens { get; set; }
+        public List<UserMusicTypes> MusicTypeChoosens { get; set; }
         public List<Countries> HostedCountry { get; set; }
         public List<Drink> Drinks { get; set; }
         public List<Food> Food { get; set; }
         public List<ToBring> ToBring { get; set; }
+        public string HostEmail { get; set; }
 
     }
 }

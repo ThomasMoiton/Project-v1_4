@@ -11,7 +11,7 @@ namespace Project_v1_4.Models
     {
         public UserModel()
         {
-            MusicTypeChoosens = new List<UserMusicStyle>();
+            MusicTypeChoosens = new List<UserMusicTypes>();
         }
 
         [Display(Name = "Email address")]
@@ -38,7 +38,7 @@ namespace Project_v1_4.Models
         public string Address { get; set; }
         public string PostCode { get; set; }
         public int CountryId { get; set; }
-        public List<UserMusicStyle> MusicTypeChoosens { get; set; }
+        public List<UserMusicTypes> MusicTypeChoosens { get; set; }
         public List<string> MusicTypesSelected { get; set; }
 
     }

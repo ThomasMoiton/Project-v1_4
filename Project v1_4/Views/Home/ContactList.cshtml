@@ -1,0 +1,38 @@
+﻿@model Project_v1_4.Models.ContactListModel
+<DOCTYPE html>
+    @Html.HiddenFor(model => model.LoginedUserName)
+    <html>
+    <head>
+        <script src="~/Scripts\contactList.js"></script>
+    </head>
+    <body>
+        <div class="col-md-12">
+            <h2 class="text-center">Organize My Party</h2>
+            <h4 class="text-center">Complete this formular to update your Contact list</h4>
+            <div class="text-center">
+                <div class="col-md-12 text-center">
+                    <div>
+                        <label>Enter your contact info here:</label>
+                        <table id="contactListTable" style="margin-right: auto; margin-left: auto;">
+                            <tbody>
+                                <TR>
+                                    <TD><INPUT type="checkbox" name="chk" /></TD>
+                                    <TD id="contactFirstNameTDToDelete"> <INPUT type="text" id="newContact0" /> </TD>
+                                    <TD id="contactLastNameTDToDelete"> <INPUT type="text" id="newContact0" /> </TD>
+                                    <TD id="contactEmailTDToDelete"> <INPUT type="text" id="newContact0" /> </TD>
+                                </TR>
+                            </tbody>
+                        </table>
+                        <button type="button" class="glyphicon glyphicon-plus-sign" style="color:green" onclick="addContactRow('contactListTable')" />
+                        <button type="button" class="glyphicon glyphicon-minus-sign" style="color:red" onclick="deleteContact('contactListTable')" />
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <br />
+                        <label></label>
+                        <button type="button" id="btnSaveContactList" style="background-color: #4CAF50; border: none;color: white;padding: 15px 32px; text-align: center; text-decoration: none;display: inline-block; font-size: 16px;" onclick="saveContact()">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

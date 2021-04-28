@@ -14,7 +14,16 @@ namespace Project_v1_4.Models
     
     public partial class MusicTypes
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public MusicTypes()
+        {
+            this.UserMusicTypes = new HashSet<UserMusicTypes>();
+        }
+    
         public int MusicTypeId { get; set; }
         public string MusicTypeName { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserMusicTypes> UserMusicTypes { get; set; }
     }
 }
